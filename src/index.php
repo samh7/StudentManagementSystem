@@ -29,9 +29,24 @@
         $email = $_POST["email"];
         $registration = $_POST["registration"];
         $phone_number = $_POST["phone_number"];
-        $address = $_POST["address"];
-        if (empty($u_name) || empty($email) || empty($registration) || empty($phone_number) || empty($address) || empty($_POST["password"])) {
+        if (!ctype_digit($phone_number) || strlen($_POST["password"]) < 4) {
           echo '
+          <div class="mt-44">
+          <div class="text-lg font-extrabold text-red-600">
+          <p>Phone Number cannot have letters!</p>
+          and
+          <p>Password must have more that 3 letters!</p>
+          </div>
+          <br />
+          <a href="javascript:self.history.back()"
+            ><button class="btn">Go Back</button></a
+          >
+        </div>
+          ';
+        } else {
+          $address = $_POST["address"];
+          if (empty($u_name) || empty($email) || empty($registration) || empty($phone_number) || empty($address) || empty($_POST["password"])) {
+            echo '
           <div class="mt-44">
           <div class="text-lg font-extrabold text-red-600">
             <p>All the fields are required!</p>
@@ -42,17 +57,17 @@
           >
         </div>
           ';
-        } else {
-          $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
-          $student = new Student($registration, $u_name, $address, $phone_number, $email);
-          $verify_query_email = mysqli_query($conn, "SELECT * FROM student where Email = '$email'") or die("Select Error");
-          $verify_query_reg = mysqli_query($conn, "SELECT * FROM student where Registration = '$registration'") or die("Select Error");
-          $verify_query_phone = mysqli_query($conn, "SELECT * FROM student where PhoneNumber = '$phone_number'") or die("Select Error");
-          // $row = mysqli_fetch_array($verify_query);
-          // $PasswordHash = $row["PasswordHash"];
-          // echo password_verify( "admin", $password_hash) == true;
-          if (mysqli_num_rows($verify_query_email) != 0 || mysqli_num_rows($verify_query_reg) != 0 || mysqli_num_rows($verify_query_phone) != 0) {
-            echo '
+          } else {
+            $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+            $student = new Student($registration, $u_name, $address, $phone_number, $email);
+            $verify_query_email = mysqli_query($conn, "SELECT * FROM student where Email = '$email'") or die("Select Error");
+            $verify_query_reg = mysqli_query($conn, "SELECT * FROM student where Registration = '$registration'") or die("Select Error");
+            $verify_query_phone = mysqli_query($conn, "SELECT * FROM student where PhoneNumber = '$phone_number'") or die("Select Error");
+            // $row = mysqli_fetch_array($verify_query);
+            // $PasswordHash = $row["PasswordHash"];
+            // echo password_verify( "admin", $password_hash) == true;
+            if (mysqli_num_rows($verify_query_email) != 0 || mysqli_num_rows($verify_query_reg) != 0 || mysqli_num_rows($verify_query_phone) != 0) {
+              echo '
           <div class="mt-44">
           <div class="text-lg font-extrabold text-red-600">
             <p>The email address or registration number or phone number is used, Try another One Please!</p>
@@ -63,9 +78,9 @@
           >
         </div>
           ';
-          } else {
-            $query = mysqli_query($conn, $student->GetInsertSqlQuery() . "," . "'$password_hash')") or die("Insert Error!");
-            echo '
+            } else {
+              $query = mysqli_query($conn, $student->GetInsertSqlQuery() . "," . "'$password_hash')") or die("Insert Error!");
+              echo '
           <div class="mt-44">
       <div class="text-lg font-extrabold text-green-600">
         <p>Sign Up Successful!</p>
@@ -76,21 +91,22 @@
       >
     </div>
           ';
+            }
           }
+          //       if (mysqli_num_rows($query) != 0) {
+          //         echo "<div class='message'>
+          //         <p>This email is used, Try another One Please!</p>
+          //     </div> <br>";
+          //         echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
+          //       } else {
+          //         mysqli_query($conn, "INSERT INTO users(Username, Email, Age, PasswordHash)
+          // VALUES('$username', '$email', '$age', '$password_HASH' )") or die("Error Occurred");
+          //         echo "<div class='message'>
+          //       <p>Registration successfully!</p>
+          //   </div> <br>";
+          //         echo "<a href='index.php'><button class='btn'>Login Now</button>";
+          //       }
         }
-        //       if (mysqli_num_rows($query) != 0) {
-        //         echo "<div class='message'>
-        //         <p>This email is used, Try another One Please!</p>
-        //     </div> <br>";
-        //         echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
-        //       } else {
-        //         mysqli_query($conn, "INSERT INTO users(Username, Email, Age, PasswordHash)
-        // VALUES('$username', '$email', '$age', '$password_HASH' )") or die("Error Occurred");
-        //         echo "<div class='message'>
-        //       <p>Registration successfully!</p>
-        //   </div> <br>";
-        //         echo "<a href='index.php'><button class='btn'>Login Now</button>";
-        //       }
       } else {
 
       ?>

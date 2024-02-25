@@ -53,8 +53,8 @@ if (!isset($_SESSION["valid_p"])) {
                       <p>Password Reset Successful!</p>
                     </div>
                     <br />
-                    <a href="log_out.php"
-                      ><button class="btn">Go Home</button></a
+                    <a href="sign_in.php"
+                      ><button class="btn">Sign In</button></a
                     >
                   </div>
                   ';

@@ -58,7 +58,7 @@ include("php/mailer.php");
           } else {
             $mailer = new Mailer();
             $password_reset_token = $mailer->ResetPassword($email);
-            $_SESSION["password_reset_token"] = $password_reset_token;
+            $_SESSION["reset_token"] = $password_reset_token;
             $_SESSION["email"] = "$email";
             $_SESSION["valid_p"] = true;
             header("Location: verify_password_reset_token.php");

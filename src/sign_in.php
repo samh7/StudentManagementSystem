@@ -48,6 +48,7 @@ session_start();
           echo $password_verify;
 
           if ($password_verify == true) {
+            // $_SESSION["username"] = $row["Username"];
             $_SESSION["email"] = $row["Email"];
             $_SESSION["address"] = $row["Address"];
             $_SESSION["phone_number"] = $row["PhoneNumber"];
