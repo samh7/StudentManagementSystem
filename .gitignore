@@ -1,2 +1,6 @@
 /vendor/
 /.vs/
+/db/
+/test/
+/www/
+/dump/
