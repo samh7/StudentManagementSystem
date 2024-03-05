@@ -121,7 +121,7 @@ session_start();
         </form>
         <div class="mt-4">
           Don't have an account?
-          <a class="text-sm text-blue-500" href="./index.php">Sign Up</a>
+          <a class="text-sm text-blue-500" href="./index.php">Sign In</a>
         </div>
         <div class="mt-4">
           Forgot Password?
