@@ -2,6 +2,9 @@
 require '../vendor/autoload.php';
 class Mailer
 {
+    //This app password should only be used by the owner of this repo
+    //Any other use outside that will attract some consequences
+    //The users of the app password are known and visible
     private $app_password = "iwzenhlthxnosoqb";
     function VerifyEmail($to)
     {
