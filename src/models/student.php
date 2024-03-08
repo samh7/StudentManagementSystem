@@ -14,8 +14,7 @@ class Student
         $uname,
         $address,
         $phone,
-        $email,
-
+        $email
     ) {
         $this->registration = $registration;
         $this->uname = $uname;

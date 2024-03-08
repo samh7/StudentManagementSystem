@@ -12,8 +12,8 @@ if (!isset($_SESSION["valid_p"])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Index</title>
-    <link rel="stylesheet" href="../css/output.css" />
-    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="output.css" />
+    <link rel="stylesheet" href="styles.css" />
     <style>
         .min-width {
             min-width: 360px;
@@ -86,7 +86,7 @@ if (!isset($_SESSION["valid_p"])) {
             <?php } ?>
         </div>
     </div>
-    <img width="300px" src="../assets//images/nature-dog.webp" alt="">
+    <img width="300px" src="nature-dog.webp" alt="">
     </div>
 </body>
 
