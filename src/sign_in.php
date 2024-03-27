@@ -116,12 +116,12 @@ session_start();
             <input class=" w-52 rounded-sm p-1" type="password" id="password" name="password" placeholder="Enter a password" />
           </div>
           <div class="flex justify-center">
-            <input type="submit" name="submit" id="submit" value="Sign Up" class="bg-black w-52  text-white mr-10 h-10 rounded-lg">
+            <input type="submit" name="submit" id="submit" value="Sign In" class="bg-black w-52  text-white mr-10 h-10 rounded-lg">
           </div>
         </form>
         <div class="mt-4">
           Don't have an account?
-          <a class="text-sm text-blue-500" href="./index.php">Sign In</a>
+          <a class="text-sm text-blue-500" href="./index.php">Sign Up</a>
         </div>
         <div class="mt-4">
           Forgot Password?
